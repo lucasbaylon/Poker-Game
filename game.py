@@ -23,6 +23,7 @@ def ask_app(question, game=""):
 
 class Game(object):
     def __init__(self):
+        self.raise_amount = None
         self.need_raise_info = False
         self.game_over = False
         self.acting_player = Player()
@@ -480,9 +481,7 @@ class Game(object):
             if response == "raise":
                 self.need_raise_info = True
                 while True:
-                    bet = int(
-                        ask_app(f"How much would {player.name} like to raise? ({player.chips} available)\n->",
-                                self))
+                    bet = int(self.raise_amount)
                     if bet > player.chips or bet <= 0:
                         print("Invalid response")
                         continue
@@ -505,9 +504,7 @@ class Game(object):
                 player.stake_gap = 0
                 while True:
                     try:
-                        bet = int(
-                            ask_app(f"How much would {player.name} like to raise? ({player.chips} available)\n->",
-                                    self))
+                        bet = int(self.raise_amount)
                     except ValueError:
                         continue
                     if bet > player.chips or bet <= 0:

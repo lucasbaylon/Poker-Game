@@ -9,6 +9,7 @@ class GamePage(Frame):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
 
+        self.raise_amount = None
         self.restart = False
 
         canv = Canvas(self, width=1280, height=720, bg='white')
@@ -146,7 +147,6 @@ class GamePage(Frame):
         # self.raise_entry.lower(self.action_cover_label)
         # self.winner_label.lower(self.action_cover_label)
         # self.raise_button.lower(self.action_cover_label)
-        print(self.raise_entry.get())
         if self.restart:
             card1 = ImageTk.PhotoImage(Image.open(str("cards\default0.png")).resize((85, 130), Image.ANTIALIAS))
             self.cc_1.image = card1
